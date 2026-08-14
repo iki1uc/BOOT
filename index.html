@@ -1,37 +1,43 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>GEO‑3D‑ASCII · RUN8 · iki1uc</title>
-<style>
-body { background:#000; color:#0f0; font-family:Consolas; padding:20px; }
-pre { font-size:16px; line-height:18px; }
-</style>
+    META‑ZONE
+    STYLE‑ZONE
 </head>
+
 <body>
 
-<h2>GEO‑3D‑ASCII · RUN8</h2>
-<pre id="geo">START…</pre>
+    HEADER‑ZONE
+        Titel
+        System‑Module‑Anzeige
 
-<script>
-let f = 0;
+    GEO‑3D‑ASCII‑ZONE
+        <pre id="geo">START…</pre>
 
-function anim(){
-    f++;
+    SYSTEM‑STATUS‑ZONE
+        NC.engine‑Status
+        RESPO‑Status
+        OS‑Status
+        243‑Status
 
-    // 3D‑Rotation simuliert durch wechselnde Tiefe
-    const depth = ["●","○","·","∙","•"];
-    const d = (i)=> depth[(f+i)%depth.length];
+    START‑SEQUENZ‑ZONE
+        DOOR → DOO → RESPO → OS → NC.engine → 243 → SCORE → WETTE → SLIDE → Axiom
 
-    // Anime‑Glow simuliert durch Funken
-    const glow = (f%2 ? "✦" : "✧");
+    MASSNAHME‑BUTTON
+        „Maßnahme starten“
 
-    // Amiga‑Raster simuliert durch horizontale Balken
-    const raster = (f%3 ? "▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓" : "██████████████████");
+    LOG‑ZONE
+        ASCII‑Frames
+        System‑Logs
+        RESPO‑Matrix
+        NC‑Deckung
 
-    const geo = `
-GEO‑3D‑ROTATION (frame ${f})
+    SCRIPT‑ZONE
+        anim()
+        Frame‑Rotation
+        Z‑Achse‑Fix
+        start.js‑Bindung
+        boot.js‑Bindung
 
-X‑Axis  ─── ${d(1)} ${d(2)} ${d(3)}
-Y‑Axis  ─── ${d(2)} ${d(3)} ${d(4)}
-Z‑
+</body>
+</html>
