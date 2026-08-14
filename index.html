@@ -30,7 +30,9 @@
             [SLIDE]
 
     GEO‑3D‑ASCII‑ZONE
-        <pre id="geo">START…</pre>
+        START…
+        GEO‑Dreieck‑ASCII
+        GEO‑Circle‑ASCII
 
     SYSTEM‑STATUS‑ZONE
         NC.engine‑Status
@@ -50,10 +52,12 @@
         RESPO‑Matrix
         NC‑Deckung
 
-    SCRIPT‑ZONE (type="module")
+    SCRIPT‑ZONE
         anim()
         Frame‑Rotation
         Z‑Achse‑Fix
+        GEO‑Dreieck‑Renderer
+        GEO‑Circle‑Renderer
         start.js‑Bindung
         boot.js‑Bindung
 
