@@ -1,0 +1,25 @@
+OS.sysview = {
+
+  danger: function(hw) {
+
+    let d = []
+
+    // Low Voltage
+    if (hw.voltage < 0.9)
+      d.push("low-voltage: eigene Gefahr")
+
+    // High End
+    if (hw.cpu > 80 || hw.gpu > 80)
+      d.push("high-end: erhöhte eigene Gefahr")
+
+    // Middle
+    if (hw.cpu >= 40 && hw.cpu <= 70)
+      d.push("middle: stabil und interessant")
+
+    // Restklasse
+    if (hw.cpu < 20 && hw.gpu < 20)
+      d.push("schlecht aber stabil")
+
+    return d
+  }
+}
