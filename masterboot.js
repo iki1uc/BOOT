@@ -1,19 +1,17 @@
-masterboot = {
+# BOOT.geo
+zone: "BOOT"
+pos: [0,0,0]
+dir: "C"
+val: 0
+mov: "none"
 
-  load: function(file) {
-    return OS.read(file)
-  },
+memory:
+  type: "ram-rom"
+  mode: "virtual"
+  location: "RAM"
+  bootable: true
 
-  apply: function(geo) {
-    OS.zone = geo.zone
-    OS.pos  = geo.pos
-    OS.dir  = geo.dir
-    OS.val  = geo.val
-    OS.mov  = geo.mov
-  },
-
-  start: function() {
-    let geo = this.load("BOOT.geo")
-    this.apply(geo)
-  }
-}
+rules:
+  - keine Drift
+  - keine Fremdlogik
+  - OS-only
