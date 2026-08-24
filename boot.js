@@ -1,21 +1,56 @@
-DOOR laden
+const DOOR = {
+  mode: "single-entry",
+  action: () => loadKernel(),
+  fail: () => halt("NO KERNEL")
+};
 
-DOO laden
+const DOO = {
+  readSector: () => BIOS.INT13.read(),
+  offset: 0x0000,
+  kernelLBA: 1,
+  kernelSize: 32 * 1024
+};
 
-RESPO laden
+const RESPO = {
+  log: msg => console.log("[BOOT]", msg),
+  error: msg => console.error("[ERROR]", msg),
+  ok: msg => console.log("[OK]", msg)
+};
 
-OS laden
+const OS = {
+  kernel: "/boot/kernel.bin",
+  entry: 0x1000,
+  map: "flat",
+  handoff: () => jump(OS.entry)
+};
 
-NC.engine laden
+const NC_engine = {
+  cpu: "real-mode",
+  memDetect: () => detectMemory(0x413),
+  stack: 0x9000,
+  disk: () => BIOS.INT13.enable(),
+  video: () => BIOS.INT10.textmode(0x03)
+};
 
-243 laden
+const _243 = {
+  timer: () => BIOS.INT1A(),
+  stamp: () => recordStamp(),
+  sync: arg => sync(arg)
+};
 
-SCORE laden
+const SCORE = {
+  trace: true,
+  write: "/boot/trace.log",
+  mode: "sequential"
+};
 
-WETTE laden
+const WETTE = {
+  checksum: "CRC16",
+  verify: file => verifyCRC(file),
+  fail: () => halt("CRC ERROR")
+};
 
-SLIDE laden
-
-alle Module exportieren
-
-start.js damit versorgen
+const SLIDE = {
+  relocate: addr => relocateKernel(addr),
+  mode: "linear"
+};
