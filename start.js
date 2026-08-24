@@ -9,3 +9,14 @@ WETTE.predict()
 SLIDE.optimize()
 Axiom.activate()
 
+export {
+  DOOR,
+  DOO,
+  RESPO,
+  OS,
+  NC_engine,
+  _243,
+  SCORE,
+  WETTE,
+  SLIDE
+};
